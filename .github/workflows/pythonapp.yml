@@ -1,19 +1,18 @@
-name: Python application
+name: Python-Anwendung
 
 on:
   push:
-   branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
       
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build & Push Image
+    - name: Bild erstellen und Image pushen
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u FrissBrot --password-stdin
         docker image build -t frissbrot/test:latest .
